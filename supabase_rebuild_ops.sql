@@ -1,0 +1,40 @@
+-- Supabase: full rebuild of phase1_operations with 28 operations
+-- Run in SQL Editor. Clears existing rows and inserts fresh data.
+
+DELETE FROM time_cost_savings;
+DELETE FROM phase1_operations;
+
+INSERT INTO phase1_operations
+  (id, ref, phase, name, tool, status, category, priority, notes, conditions)
+VALUES
+  (1, 'A1.01', 1, 'Review proforma FS', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Review proforma financial statements before submission to Partner, using the hk-audit-review skill to identify errors, inconsistencies and omissions', ''),
+  (2, 'A1.02', 1, 'Cross-check tax notes, report and balance sheet', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Cross-reference tax notes, auditor''s report and balance sheet for numerical and disclosure consistency across the full set of draft financial statements', ''),
+  (3, 'A1.03', 1, 'Draft audit planning memorandum (Section C)', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Draft Section C of the audit planning memorandum and compare output to that generated from AP4.1 to identify differences for partner review', ''),
+  (4, 'A1.04', 1, 'Draft audit completion memo (Section B)', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Draft Section B of the audit completion memorandum using the audit-completion-memo skill, and compare output to that generated from AP4.1', ''),
+  (5, 'A1.05', 1, 'Draft final completion memorandum (Section A)', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Draft Section A of the final completion memorandum and compare output to that generated from AP4.1 to identify differences for partner review', ''),
+  (6, 'A1.06', 1, 'AP4.1 — staff input UI and AI spreadsheet population', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Build an HTML input form for audit staff; Claude Code populates AP4.1 audit programme spreadsheets via openpyxl, replacing manual data entry across multiple sheets', ''),
+  (7, 'A1.07', 1, 'Prepare employer''s returns (BIR56A / 56B)', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Draft BIR56A and BIR56B from payroll data; staff verify against HR records before submission to the IRD', ''),
+  (8, 'A1.08', 1, 'Bank confirmation preparation', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Prepare bank confirmation requests to the client''s bankers, including standard confirmation wording and schedules of accounts for audit purposes', ''),
+  (9, 'A1.09', 1, 'Documents sent with Audited Financial Statements', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Prepare documents to accompany the signed AFS, including representation letter and director remuneration disclosure for client signature', ''),
+  (10, 'A1.10', 1, 'Prepare profits tax computation and schedules', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Prepare profits tax computation with supporting tax schedules, extracting relevant figures from the audited financial statements and lead schedules of the engagement', ''),
+  (11, 'A1.11', 1, 'Client letter — tax assessment and demand note', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Prepare a covering letter to the client upon receipt of the tax assessment and tax demand note, explaining the assessment, payment deadline and any action required', ''),
+  (12, 'A1.12', 1, 'Expediting letter to IRD', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Identify profits tax returns filed to the IRD where assessment has not yet been issued; draft a letter to the IRD expediting the finalisation of the client''s taxation affairs', ''),
+  (13, 'A1.13', 1, 'Review client bank statements for audit', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Review and summarise client bank statements to identify unusual transactions, large cash movements and potential related-party payments for audit planning', ''),
+  (14, 'A1.14', 1, 'Draft audit queries letter', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Draft audit queries letter to the client based on review of draft financial statements and lead schedules, listing outstanding information requests and clarifications required', ''),
+  (15, 'A1.15', 1, 'Prepare depreciation and fixed asset schedule', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Prepare the depreciation and fixed asset schedule from the fixed asset register and additions/disposals listing, reconciled to the accounts and tax computation', ''),
+  (16, 'A1.16', 1, 'Prepare IRD objection letter', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Prepare a formal objection letter to the IRD against a tax assessment where the basis of assessment appears incorrect, setting out grounds for objection with supporting calculations', ''),
+  (17, 'A1.17', 1, 'Client letter — statement of tax losses', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Prepare a letter to the client upon receipt of the statement of tax losses from the IRD, explaining the loss position and implications for future tax liabilities', ''),
+  (18, 'A1.18', 1, 'Upload bank confirmation and notify via Odoo', 'Cowork', 'not-started', 'Audit & Tax', 3, 'Upload the bank confirmation received from the bank into the engagement file; notify the respective Client-in-charge and Auditor-in-charge via Odoo message to confirm receipt and trigger the next audit step', ''),
+  (19, 'A2.01', 1, 'Generate Xero year-end manual journal CSV', 'Cowork', 'not-started', 'Accounting', 3, 'Use the xero-yearend-journal skill to produce an importable manual journal CSV from TB movements for upload into Xero; UTF-8 BOM, DD/MM/YYYY format', ''),
+  (20, 'A2.02', 1, 'Inter-company balance reconciliation', 'Cowork', 'not-started', 'Accounting', 3, 'Reconcile inter-company balances across group entities and prepare a summary of outstanding differences, with proposed adjusting entries for group reporting', ''),
+  (21, 'A2.03', 1, 'MPF schedules and payroll cross-check', 'Cowork', 'not-started', 'Accounting', 3, 'Draft MPF contribution schedules and cross-check payroll records against MPF trustee statements; flag any discrepancies for management action', ''),
+  (22, 'A3.01', 1, 'Draft minutes, resolutions and statutory forms', 'Cowork', 'not-started', 'Company Secretary', 3, 'Draft board minutes, written resolutions and statutory forms (NNC1, ND2A) including routine resolutions for approval of FS, dividend declaration, change of auditor and change of bank signatories; CDD verification remains manual', ''),
+  (23, 'A3.02', 1, 'Prepare new client documents', 'Cowork', 'not-started', 'Company Secretary', 3, 'Prepare engagement letter, clearance letter to previous auditor and tax representative appointment letter for a new client engagement', ''),
+  (24, 'A3.03', 1, 'NAR1 and AGM preparation schedule', 'Cowork', 'not-started', 'Company Secretary', 3, 'Prepare a schedule of key dates for NAR1 annual return filing and AGM preparation, cross-referenced to the company''s financial year end and Companies Ordinance deadlines', ''),
+  (25, 'A3.04', 1, 'Draft NAR1 annual return', 'Cowork', 'not-started', 'Company Secretary', 3, 'Draft NAR1 annual return pre-populated from the previous year''s filing and updated for any changes in directors, shareholders or registered office address', ''),
+  (26, 'A3.05', 1, 'Client compliance calendar', 'Cowork', 'not-started', 'Company Secretary', 3, 'Prepare a compliance calendar showing key statutory deadlines — NAR1, PTR, employer''s return, AGM — and flag items falling due within 60 days', ''),
+  (27, 'A3.06', 1, 'Client onboarding pack', 'Cowork', 'not-started', 'Company Secretary', 3, 'Draft full client onboarding pack including KYC checklist, CDD questionnaire, engagement letter and fee proposal, tailored to the client''s industry and corporate structure', ''),
+  (28, 'A4.01', 1, 'Draft bilingual client communications', 'Cowork', 'not-started', 'Admin', 3, 'Draft formal English emails and written Cantonese WhatsApp messages for client communications; staff review tone and accuracy before sending', '');
+
+-- Reset sequence
+SELECT setval(pg_get_serial_sequence('phase1_operations','id'), 28);

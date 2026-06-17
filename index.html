@@ -4,353 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Claude Playbook Dashboard — Adonis Chu CPA & Associates Limited</title>
-  <style>
-/* ============================================================
-   Adonis Chu CPA & Associates Limited — Claude Playbook Dashboard
-   Brand: #03692F (green) on white · Inter + Playfair Display
-   ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
-
-/* ── Tokens ─────────────────────────────────────────────── */
-:root {
-  --green:      #03692F;
-  --green-dk:   #024A21;
-  --green-md:   #3E8E5E;
-  --green-lt:   #EAF3EC;
-  --green-tint: #F2F8F4;
-  --amber:      #C8860A;
-  --amber-lt:   #FEF3DC;
-  --red-lt:     #FEF0EF;
-  --red:        #C0392B;
-  --blue:       #1B6E8C;
-  --navy:       #1B3A5B;
-  --white:      #FFFFFF;
-  --bg:         #F7FAF8;
-  --card:       #FFFFFF;
-  --border:     #D4E8DA;
-  --txt:        #1E2B23;
-  --muted:      #5C6B62;
-  --font-sans:  'Inter', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --radius:     10px;
-  --shadow:     0 2px 12px rgba(3,105,47,0.09);
-  --shadow-lg:  0 6px 28px rgba(3,105,47,0.13);
-  --spine-w:    5px;
-}
-
-/* ── Reset ───────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-sans);
-  background: var(--bg);
-  color: var(--txt);
-  font-size: 15px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-a { color: var(--green); text-decoration: none; }
-a:hover { text-decoration: underline; }
-img { max-width: 100%; }
-
-/* ── Layout ──────────────────────────────────────────────── */
-.page-wrap { display: flex; min-height: 100vh; }
-
-/* ── Sidebar ─────────────────────────────────────────────── */
-.sidebar {
-  width: 240px;
-  flex-shrink: 0;
-  background: var(--green-dk);
-  display: flex;
-  flex-direction: column;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-}
-.sidebar-logo {
-  padding: 28px 22px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.sidebar-logo .firm { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 4px; }
-.sidebar-logo .project { font-family: var(--font-serif); font-size: 15px; color: #fff; line-height: 1.35; }
-.sidebar-nav { padding: 18px 12px; flex: 1; }
-.sidebar-nav a {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 12px; border-radius: 7px;
-  font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,0.75);
-  transition: background .15s, color .15s;
-  margin-bottom: 3px;
-}
-.sidebar-nav a:hover, .sidebar-nav a.active {
-  background: rgba(255,255,255,0.11); color: #fff; text-decoration: none;
-}
-.sidebar-nav a .nav-icon { font-size: 15px; width: 18px; text-align: center; }
-.sidebar-section { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: .13em; text-transform: uppercase; padding: 16px 12px 6px; }
-.sidebar-footer {
-  padding: 16px 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  font-size: 11px; color: rgba(255,255,255,0.4);
-}
-.sidebar-footer .updated { font-weight: 600; color: rgba(255,255,255,0.6); }
-
-/* ── Main Content ────────────────────────────────────────── */
-.main { flex: 1; overflow-x: hidden; }
-.page-header {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 28px 40px 24px;
-}
-.page-header .eyebrow { font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: .13em; text-transform: uppercase; margin-bottom: 6px; }
-.page-header h1 { font-family: var(--font-serif); font-size: 28px; color: var(--green-dk); }
-.page-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 4px; }
-.content { padding: 32px 40px 60px; }
-
-/* ── Section titles ──────────────────────────────────────── */
-.section-title {
-  font-family: var(--font-serif);
-  font-size: 20px; color: var(--green-dk);
-  margin-bottom: 18px;
-  display: flex; align-items: center; gap: 10px;
-}
-.section-title::before {
-  content: '';
-  display: block; width: var(--spine-w); height: 22px;
-  background: var(--green); border-radius: 3px;
-  flex-shrink: 0;
-}
-
-/* ── Cards ───────────────────────────────────────────────── */
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  box-shadow: var(--shadow);
-}
-.card-grid { display: grid; gap: 20px; }
-.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
-.card-grid-2 { grid-template-columns: repeat(2, 1fr); }
-
-/* ── Phase cards ─────────────────────────────────────────── */
-.phase-card {
-  border-left: var(--spine-w) solid var(--green);
-  border-radius: var(--radius);
-  background: var(--card);
-  padding: 22px 24px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  border-left-width: var(--spine-w);
-  transition: box-shadow .2s;
-  display: block; color: inherit;
-}
-.phase-card:hover { box-shadow: var(--shadow-lg); text-decoration: none; }
-.phase-card.phase-pending { opacity: .72; }
-.phase-card .phase-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-.phase-card .phase-name { font-family: var(--font-serif); font-size: 20px; color: var(--green-dk); margin-bottom: 6px; }
-.phase-card .phase-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
-.phase-card .phase-target { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
-.phase-card .phase-target span { font-weight: 600; color: var(--txt); }
-.progress-bar-wrap { background: var(--green-lt); border-radius: 4px; height: 8px; overflow: hidden; }
-.progress-bar { height: 100%; background: var(--green); border-radius: 4px; transition: width .6s ease; }
-.progress-pct { font-size: 12px; font-weight: 600; color: var(--green); margin-top: 5px; text-align: right; }
-
-/* ── Status badges ───────────────────────────────────────── */
-.badge {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-size: 11.5px; font-weight: 600; padding: 3px 10px;
-  border-radius: 20px; white-space: nowrap;
-}
-.badge-not-started  { background: #F0F0F0; color: #555; }
-.badge-in-progress  { background: var(--amber-lt); color: var(--amber); }
-.badge-done         { background: var(--green-lt); color: var(--green-dk); }
-.badge-active       { background: var(--green-lt); color: var(--green-dk); }
-.badge-pending      { background: #F0F0F0; color: #666; }
-.badge::before { content: '●'; font-size: 8px; }
-
-.risk-badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px; }
-.risk-low  { background: var(--green-lt); color: var(--green-dk); }
-.risk-med  { background: var(--amber-lt); color: var(--amber); }
-.risk-high { background: var(--red-lt); color: var(--red); }
-
-/* ── KPI row ─────────────────────────────────────────────── */
-.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
-.kpi-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 20px 22px;
-  box-shadow: var(--shadow);
-}
-.kpi-label { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
-.kpi-value { font-family: var(--font-serif); font-size: 32px; color: var(--green-dk); font-weight: 700; line-height: 1; margin-bottom: 4px; }
-.kpi-sub { font-size: 12px; color: var(--muted); }
-
-/* ── Operations table ────────────────────────────────────── */
-.ops-table { width: 100%; border-collapse: collapse; }
-.ops-table thead th {
-  background: var(--green-dk); color: #fff;
-  font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-  padding: 11px 14px; text-align: left;
-}
-.ops-table thead th:first-child { border-radius: 8px 0 0 0; }
-.ops-table thead th:last-child  { border-radius: 0 8px 0 0; }
-.ops-table tbody tr { border-bottom: 1px solid var(--border); cursor: pointer; transition: background .12s; }
-.ops-table tbody tr:nth-child(even) { background: var(--green-tint); }
-.ops-table tbody tr:hover { background: var(--green-lt); }
-.ops-table tbody td { padding: 12px 14px; font-size: 13.5px; vertical-align: middle; }
-.op-name { font-weight: 500; color: var(--green-dk); }
-.op-tool { font-size: 12px; color: var(--muted); font-family: 'Courier New', monospace; }
-.time-high { color: var(--green); font-weight: 700; }
-.time-med  { color: var(--amber); font-weight: 700; }
-
-/* ── Expandable detail row ───────────────────────────────── */
-.op-detail-row { display: none; background: var(--green-lt) !important; }
-.op-detail-row.open { display: table-row; }
-.op-detail-cell { padding: 16px 20px 20px 36px !important; }
-.op-detail-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.detail-block h4 { font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 5px; }
-.detail-block p, .detail-block ul { font-size: 13px; color: var(--txt); }
-.detail-block ul { padding-left: 16px; }
-.detail-block ul li { margin-bottom: 3px; }
-
-/* ── Hours saved ─────────────────────────────────────────── */
-.hours-wrap { display: flex; align-items: center; gap: 8px; }
-.hours-est { font-size: 13px; color: var(--muted); }
-.hours-actual { font-size: 13px; font-weight: 600; color: var(--green); }
-.hours-null { font-size: 12px; color: #bbb; font-style: italic; }
-
-/* ── Decisions checklist ─────────────────────────────────── */
-.decision-list { list-style: none; }
-.decision-list li {
-  display: flex; align-items: flex-start; gap: 12px;
-  padding: 13px 0; border-bottom: 1px solid var(--border);
-  font-size: 14px; color: var(--txt);
-}
-.decision-list li:last-child { border-bottom: none; }
-.decision-num {
-  flex-shrink: 0; width: 26px; height: 26px;
-  background: var(--green); color: #fff; border-radius: 50%;
-  font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center;
-}
-.decision-num.done { background: var(--green-lt); color: var(--green); border: 2px solid var(--green); }
-.decision-text.done { text-decoration: line-through; color: var(--muted); }
-
-/* ── Chart container ─────────────────────────────────────── */
-.chart-wrap { display: flex; align-items: center; gap: 28px; }
-.chart-legend { flex: 1; }
-.legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 13px; }
-.legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-
-/* ── Team row ────────────────────────────────────────────── */
-.team-grid { display: flex; gap: 12px; flex-wrap: wrap; }
-.team-chip {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--green-lt); border: 1px solid var(--border);
-  border-radius: 24px; padding: 7px 14px 7px 10px;
-}
-.team-avatar {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: var(--green); color: #fff;
-  font-size: 12px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-}
-.team-info .name { font-size: 13px; font-weight: 600; color: var(--green-dk); }
-.team-info .role { font-size: 11px; color: var(--muted); }
-
-/* ── Donut chart (pure CSS/SVG) ──────────────────────────── */
-.donut-svg { transform: rotate(-90deg); }
-.donut-track { fill: none; stroke: var(--green-lt); stroke-width: 12; }
-.donut-fill  { fill: none; stroke: var(--green);    stroke-width: 12; stroke-linecap: round; transition: stroke-dashoffset .8s ease; }
-.donut-label { font-family: var(--font-serif); font-size: 22px; fill: var(--green-dk); text-anchor: middle; dominant-baseline: middle; }
-.donut-sub   { font-size: 11px; fill: var(--muted); text-anchor: middle; dominant-baseline: middle; }
-
-/* ── Add operation form ──────────────────────────────────── */
-.add-op-btn {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: var(--green); color: #fff;
-  border: none; border-radius: 7px;
-  padding: 9px 18px; font-size: 13.5px; font-weight: 600;
-  cursor: pointer; transition: background .15s;
-  font-family: var(--font-sans);
-}
-.add-op-btn:hover { background: var(--green-dk); }
-.modal-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,.45); z-index: 200;
-  align-items: center; justify-content: center;
-}
-.modal-overlay.open { display: flex; }
-.modal {
-  background: #fff; border-radius: 12px;
-  padding: 32px; width: 540px; max-height: 90vh;
-  overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,.25);
-}
-.modal h3 { font-family: var(--font-serif); font-size: 20px; color: var(--green-dk); margin-bottom: 20px; }
-.form-group { margin-bottom: 16px; }
-.form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: .07em; }
-.form-group input, .form-group select, .form-group textarea {
-  width: 100%; border: 1px solid var(--border);
-  border-radius: 7px; padding: 9px 12px; font-size: 14px;
-  font-family: var(--font-sans); color: var(--txt);
-  background: var(--bg); outline: none;
-  transition: border-color .15s;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green); }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 22px; }
-.btn-cancel { background: none; border: 1px solid var(--border); border-radius: 7px; padding: 9px 18px; font-size: 13.5px; font-weight: 500; color: var(--muted); cursor: pointer; font-family: var(--font-sans); }
-.btn-cancel:hover { background: var(--bg); }
-.btn-save { background: var(--green); color: #fff; border: none; border-radius: 7px; padding: 9px 18px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); }
-.btn-save:hover { background: var(--green-dk); }
-
-/* ── Phase detail page ───────────────────────────────────── */
-.phase-hero {
-  background: var(--green-dk); color: #fff;
-  padding: 36px 40px 32px;
-  border-bottom: none;
-}
-.phase-hero .eyebrow { color: rgba(255,255,255,.55); font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 6px; }
-.phase-hero h1 { font-family: var(--font-serif); font-size: 32px; color: #fff; margin-bottom: 6px; }
-.phase-hero .subtitle { color: rgba(255,255,255,.72); font-size: 15px; }
-.phase-hero .meta { display: flex; gap: 28px; margin-top: 20px; }
-.phase-hero .meta-item .ml { font-size: 10px; font-weight: 700; color: rgba(255,255,255,.4); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; }
-.phase-hero .meta-item .mv { font-size: 16px; font-weight: 600; color: #fff; }
-
-/* ── Responsive ──────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .card-grid-3 { grid-template-columns: 1fr 1fr; }
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 780px) {
-  .sidebar { display: none; }
-  .page-header, .content { padding-left: 20px; padding-right: 20px; }
-  .card-grid-3, .card-grid-2, .kpi-grid { grid-template-columns: 1fr; }
-  .op-detail-inner { grid-template-columns: 1fr; }
-}
-
-/* ── Utilities ───────────────────────────────────────────── */
-.mb-8  { margin-bottom: 8px; }
-.mb-16 { margin-bottom: 16px; }
-.mb-24 { margin-bottom: 24px; }
-.mb-32 { margin-bottom: 32px; }
-.mt-8  { margin-top: 8px; }
-.mt-24 { margin-top: 24px; }
-.flex  { display: flex; }
-.flex-between { display: flex; justify-content: space-between; align-items: center; }
-.gap-12 { gap: 12px; }
-.text-muted { color: var(--muted); }
-.text-sm { font-size: 13px; }
-.text-green { color: var(--green); }
-.font-serif { font-family: var(--font-serif); }
-.scripture {
-  font-family: var(--font-serif); font-style: italic;
-  font-size: 13px; color: var(--muted);
-  border-left: 3px solid var(--green-lt);
-  padding: 8px 14px; margin-top: 32px;
-}
-
-</style>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="page-wrap">
@@ -362,19 +16,21 @@ img { max-width: 100%; }
     </div>
     <nav class="sidebar-nav">
       <div class="sidebar-section">Navigation</div>
-      <a href="index.html" class="active"><span class="nav-icon">⬛</span> Overview</a>
+      <a onclick="location.href='index.html'" style="cursor:pointer"><span class="nav-icon">⬛</span> Overview</a>
       <div class="sidebar-section">Phases</div>
-      <a href="phase1.html"><span class="nav-icon">⚡</span> Phase 1 · Efficiency</a>
-      <a href="phase2.html"><span class="nav-icon">📊</span> Phase 2 · Visualisation</a>
-      <a href="phase3.html"><span class="nav-icon">📣</span> Phase 3 · Acquisition</a>
+      <a onclick="location.href='phase1.html'" style="cursor:pointer"><span class="nav-icon">⚡</span> Phase 1 · Efficiency</a>
+      <a onclick="location.href='phase2.html'" style="cursor:pointer"><span class="nav-icon">📊</span> Phase 2 · Visualisation</a>
+      <a onclick="location.href='phase3.html'" style="cursor:pointer"><span class="nav-icon">📣</span> Phase 3 · Acquisition</a>
       <div class="sidebar-section">Tools</div>
-      <a href="#roadmap"><span class="nav-icon">✈️</span> Flight map</a>
-      <a href="#operations"><span class="nav-icon">🔧</span> Operations & Cost</a>
-      <a href="#decisions"><span class="nav-icon">✅</span> Decisions</a>
-      <a href="#team"><span class="nav-icon">👥</span> Team</a>
+      <a onclick="document.getElementById('roadmap').scrollIntoView({behavior:'smooth'})" style="cursor:pointer"><span class="nav-icon">✈️</span> Flight map</a>
+      <a onclick="document.getElementById('bu-summary').scrollIntoView({behavior:'smooth'})" style="cursor:pointer"><span class="nav-icon">📊</span> By Business Unit</a>
+      <a onclick="document.getElementById('operations').scrollIntoView({behavior:'smooth'})" style="cursor:pointer"><span class="nav-icon">🔧</span> Operations & Cost</a>
+      <a onclick="document.getElementById('decisions').scrollIntoView({behavior:'smooth'})" style="cursor:pointer"><span class="nav-icon">✅</span> Decisions</a>
+      <a onclick="document.getElementById('team').scrollIntoView({behavior:'smooth'})" style="cursor:pointer"><span class="nav-icon">👥</span> Team</a>
     </nav>
     <div class="sidebar-footer">
-      Last updated: <span class="updated" id="sb-updated">—</span>
+      Last updated: <span class="updated" id="sb-updated">—</span><br>
+      <span id="sb-status" style="font-size:10px;color:rgba(255,255,255,.35)">⬤ Connecting…</span>
     </div>
   </aside>
 
@@ -598,36 +254,34 @@ img { max-width: 100%; }
         <div id="ph-panel-3" class="card" style="display:none;border-radius:0 8px 8px 8px;border-top:none"></div>
       </div>
 
-      <!-- Operations table -->
+      <!-- Business Unit Summary -->
+      <div class="card mb-32" id="bu-summary">
+        <div class="section-title mb-16">Operations by Business Unit</div>
+        <div id="bu-summary-content"></div>
+        <div style="border-top:2px solid var(--green);background:var(--green-lt);margin-top:0;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-radius:0 0 8px 8px">
+          <span style="font-weight:700;color:var(--green-dk);font-size:13px">Grand Total</span>
+          <div style="display:flex;gap:32px;align-items:center">
+            <span style="font-size:13px;font-weight:700;color:var(--green)" id="bu-grand-total-cost">—</span>
+            <span style="font-size:18px;font-weight:700;color:var(--green)" id="bu-grand-total">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Operations viewer -->
       <div class="flex-between mb-16" id="operations">
-        <div class="section-title" style="margin-bottom:0">Phase 1 Operations & Time Cost Saved</div>
-        <button class="add-op-btn" onclick="openModal()">+ Add operation</button>
+        <div class="section-title" style="margin-bottom:0">Operations & Time Cost Saved</div>
       </div>
       <div class="card mb-32" style="padding:0;overflow:hidden">
-        <table class="ops-table">
-          <thead>
-            <tr>
-              <th style="width:42px">Ref</th>
-              <th>Operation</th>
-              <th style="text-align:right;width:140px">Staff<br><span style="font-weight:400;font-size:10px;opacity:.7">hrs @ HKD/hr</span></th>
-              <th style="text-align:right;width:140px">Manager<br><span style="font-weight:400;font-size:10px;opacity:.7">hrs @ HKD/hr</span></th>
-              <th style="text-align:right;width:140px">Partner<br><span style="font-weight:400;font-size:10px;opacity:.7">hrs @ HKD/hr</span></th>
-              <th style="text-align:right;width:120px">Cost Saved (HKD)</th>
-              <th>Status</th>
-              <th style="width:80px"></th>
-            </tr>
-          </thead>
-          <tbody id="ops-tbody"></tbody>
-          <tfoot>
-            <tr id="ops-grand-total-row" style="border-top:2px solid var(--green);background:var(--green-lt)">
-              <td colspan="5" style="padding:10px 14px;font-weight:700;color:var(--green-dk);font-size:13px">
-                Grand total — all operations
-              </td>
-              <td style="padding:10px 14px;text-align:right;font-size:16px;font-weight:700;color:var(--green)" id="ops-grand-total-cell">—</td>
-              <td colspan="2"></td>
-            </tr>
-          </tfoot>
-        </table>
+
+        <!-- Single operation detail panel -->
+        <div id="op-detail-panel" style="padding:28px 32px 24px"></div>
+
+        <!-- Grand total footer -->
+        <div style="border-top:2px solid var(--green);background:var(--green-lt);
+                    padding:10px 20px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-weight:700;color:var(--green-dk);font-size:13px">Grand total — all operations</span>
+          <span style="font-size:18px;font-weight:700;color:var(--green)" id="ops-grand-total-cell">—</span>
+        </div>
       </div>
 
       <!-- Decisions + Chart row -->
@@ -655,7 +309,6 @@ img { max-width: 100%; }
         <div class="team-grid" id="team-grid"></div>
       </div>
 
-      <div class="scripture">"Whatever your hand finds to do, do it with all your might." · Ecclesiastes 9:10</div>
     </div>
   </main>
 </div>
@@ -739,403 +392,101 @@ img { max-width: 100%; }
 </div>
 
 <!-- ── Cost Saved Modal ── -->
-<div class="modal-overlay" id="cost-modal-overlay" onclick="closeCostModalOutside(event)">
-  <div class="modal" style="width:560px">
-    <h3 id="cost-modal-title">💰 Time Cost Saved</h3>
-    <p style="font-size:12px;color:var(--muted);margin-bottom:20px" id="cost-modal-subtitle"></p>
-
-    <!-- Grade rows -->
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:8px">
-      <thead>
-        <tr style="border-bottom:2px solid var(--border)">
-          <th style="text-align:left;padding:6px 8px 6px 0;color:var(--green-dk);font-weight:600;width:110px">Grade</th>
-          <th style="text-align:left;padding:6px 8px;color:var(--green-dk);font-weight:600;width:140px">Hours saved</th>
-          <th style="text-align:left;padding:6px 8px;color:var(--green-dk);font-weight:600;width:150px">Rate (HKD/hr)</th>
-          <th style="text-align:right;padding:6px 0;color:var(--green-dk);font-weight:600">Cost saved (HKD)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--border)">
-          <td style="padding:10px 8px 10px 0;font-weight:600;color:var(--txt)">Staff</td>
-          <td style="padding:10px 8px">
-            <input type="number" id="cost-staff-hours" min="0" step="0.5" placeholder="0"
-              oninput="recalcCostModal()"
-              style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:13px;font-family:inherit">
-          </td>
-          <td style="padding:10px 8px">
-            <input type="number" id="cost-staff-rate" min="0" step="50" placeholder="e.g. 300"
-              oninput="recalcCostModal()"
-              style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:13px;font-family:inherit">
-          </td>
-          <td style="padding:10px 0;text-align:right;font-weight:600;color:var(--green-dk)" id="cost-staff-total">HK$0</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);background:var(--green-tint)">
-          <td style="padding:10px 8px 10px 0;font-weight:600;color:var(--txt)">Manager</td>
-          <td style="padding:10px 8px">
-            <input type="number" id="cost-manager-hours" min="0" step="0.5" placeholder="0"
-              oninput="recalcCostModal()"
-              style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:13px;font-family:inherit">
-          </td>
-          <td style="padding:10px 8px">
-            <input type="number" id="cost-manager-rate" min="0" step="50" placeholder="e.g. 500"
-              oninput="recalcCostModal()"
-              style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:13px;font-family:inherit">
-          </td>
-          <td style="padding:10px 0;text-align:right;font-weight:600;color:var(--green-dk)" id="cost-manager-total">HK$0</td>
-        </tr>
-        <tr>
-          <td style="padding:10px 8px 10px 0;font-weight:600;color:var(--txt)">Partner</td>
-          <td style="padding:10px 8px">
-            <input type="number" id="cost-partner-hours" min="0" step="0.5" placeholder="0"
-              oninput="recalcCostModal()"
-              style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:13px;font-family:inherit">
-          </td>
-          <td style="padding:10px 8px">
-            <input type="number" id="cost-partner-rate" min="0" step="50" placeholder="e.g. 900"
-              oninput="recalcCostModal()"
-              style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:13px;font-family:inherit">
-          </td>
-          <td style="padding:10px 0;text-align:right;font-weight:600;color:var(--green-dk)" id="cost-partner-total">HK$0</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr style="border-top:2px solid var(--green);background:var(--green-lt)">
-          <td colspan="3" style="padding:10px 8px 10px 0;font-weight:700;color:var(--green-dk)">Total cost saved per engagement</td>
-          <td style="padding:10px 0;text-align:right;font-size:18px;font-weight:700;color:var(--green)" id="cost-grand-total">HK$0</td>
-        </tr>
-      </tfoot>
-    </table>
-
-    <div class="form-group" style="margin-top:12px">
-      <label>Notes (optional)</label>
-      <textarea id="cost-notes" rows="2" placeholder="e.g. Based on pilot of Raymin audit, Mar 2026"
-        style="width:100%;border:1px solid var(--border);border-radius:7px;padding:9px 12px;font-size:13px;font-family:inherit;color:var(--txt);background:var(--bg)"></textarea>
-    </div>
-
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeCostModal()">Cancel</button>
-      <button class="btn-save" onclick="saveCostData()">Save</button>
-    </div>
-  </div>
-</div>
-
-<!-- ── Edit Operation Modal ── -->
-<div class="modal-overlay" id="edit-op-modal-overlay" onclick="closeEditOpModalOutside(event)">
-  <div class="modal" style="width:480px">
-    <h3>✏️ Edit Operation</h3>
-    <input type="hidden" id="edit-op-id">
-    <div class="form-group">
-      <label>Operation Name</label>
-      <input type="text" id="edit-op-name"
-        style="width:100%;border:1px solid var(--border);border-radius:7px;padding:9px 12px;font-size:14px;font-family:inherit;color:var(--txt);background:var(--bg)">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Business Unit</label>
-        <select id="edit-op-category"
-          style="width:100%;border:1px solid var(--border);border-radius:7px;padding:9px 12px;font-size:14px;font-family:inherit;color:var(--txt);background:var(--bg)">
-          <option value="Audit &amp; Tax">🔍 Audit &amp; Tax</option>
-          <option value="Accounting">🧾 Accounting</option>
-          <option value="Company Secretary">🏢 Company Secretary</option>
-          <option value="Admin">💬 Admin</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Priority (1 = highest, 5 = lowest)</label>
-        <select id="edit-op-priority"
-          style="width:100%;border:1px solid var(--border);border-radius:7px;padding:9px 12px;font-size:14px;font-family:inherit;color:var(--txt);background:var(--bg)">
-          <option value="1">1 — Highest</option>
-          <option value="2">2 — High</option>
-          <option value="3">3 — Medium</option>
-          <option value="4">4 — Low</option>
-          <option value="5">5 — Lowest</option>
-        </select>
-      </div>
-    </div>
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeEditOpModal()">Cancel</button>
-      <button class="btn-save" id="edit-op-save-btn" onclick="saveEditOp()">Save</button>
-    </div>
-  </div>
-</div>
 
 <script>
-// ── Supabase client ────────────────────────────────────────
+// ── Supabase via plain REST fetch (no JS client = no postMessage/DataCloneError) ──
 const SUPABASE_URL = 'https://ktniezsldanlvtwygrax.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_hHO9LedYr3szuD1jzI14Ow_FHtJ7jGG';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const SB_HEADERS = {
+  'apikey': SUPABASE_KEY,
+  'Authorization': 'Bearer ' + SUPABASE_KEY,
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Prefer': 'return=representation'
+};
+const SB_READ_HEADERS = {
+  'apikey': SUPABASE_KEY,
+  'Authorization': 'Bearer ' + SUPABASE_KEY,
+  'Accept': 'application/json'
+};
+
+async function sbSelect(table, params = '') {
+  try {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${params}`, {
+      headers: SB_READ_HEADERS
+    });
+    if (!r.ok) return { data: null, error: { message: await r.text() } };
+    return { data: await r.json(), error: null };
+  } catch(e) { return { data: null, error: { message: e.message } }; }
+}
+
+async function sbInsert(table, body) {
+  try {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+      method: 'POST', headers: SB_HEADERS, body: JSON.stringify(body)
+    });
+    if (!r.ok) return { data: null, error: { message: await r.text() } };
+    const data = await r.json().catch(() => null);
+    return { data, error: null };
+  } catch(e) { return { data: null, error: { message: e.message } }; }
+}
+
+async function sbUpdate(table, body, match) {
+  try {
+    const q = Object.entries(match).map(([k,v]) => `${k}=eq.${encodeURIComponent(v)}`).join('&');
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${q}`, {
+      method: 'PATCH', headers: SB_HEADERS, body: JSON.stringify(body)
+    });
+    if (!r.ok) return { error: { message: await r.text() } };
+    return { error: null };
+  } catch(e) { return { error: { message: e.message } }; }
+}
+
+async function sbDelete(table, match) {
+  try {
+    const q = Object.entries(match).map(([k,v]) => `${k}=eq.${encodeURIComponent(v)}`).join('&');
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${q}`, {
+      method: 'DELETE', headers: SB_HEADERS
+    });
+    if (!r.ok) return { error: { message: await r.text() } };
+    return { error: null };
+  } catch(e) { return { error: { message: e.message } }; }
+}
+
+async function sbCheckExists(table, match) {
+  const q = Object.entries(match).map(([k,v]) => `${k}=eq.${encodeURIComponent(v)}`).join('&');
+  const { data } = await sbSelect(table, q + '&select=id&limit=1');
+  return data && data.length > 0;
+}
 
 let DATA = null;
-let COST_MAP = {};   // keyed by operation_id
-let CURRENT_COST_OP = null;  // operation being edited in cost modal
+let COST_MAP = {};
+let CURRENT_COST_OP = null;
+
+function setSbStatus(state) {
+  const el = document.getElementById('sb-status');
+  if (!el) return;
+  if (state === 'online') {
+    el.textContent = '⬤ Supabase connected';
+    el.style.color = '#6EE7B7';
+  } else {
+    el.textContent = '⬤ Offline — local data';
+    el.style.color = '#F59E0B';
+  }
+}
 
 async function init() {
-  // 1. Load static config (phases, decisions, team) from data.json
-  const EMBEDDED_DATA = {
-  "project": {
-    "firm": "Adonis Chu CPA & Associates Limited",
-    "lastUpdated": "2026-06-13",
-    "overallProgress": 5
-  },
-  "decisions": [
-    {
-      "id": 1,
-      "text": "Confirm the four seats and everyone installs the Claude desktop app",
-      "done": false
-    },
-    {
-      "id": 2,
-      "text": "Agree the privacy protocol \u2014 desktop, local, minimise & redact",
-      "done": false
-    },
-    {
-      "id": 3,
-      "text": "Shortlist 3\u20135 Phase 1 operations to improve efficiency",
-      "done": false
-    },
-    {
-      "id": 4,
-      "text": "Assign an owner and a target date to each",
-      "done": false
-    },
-    {
-      "id": 5,
-      "text": "Set the date for our first review check-in",
-      "done": false
-    }
-  ],
-  "phases": [
-    {
-      "id": 1,
-      "name": "Phase 1",
-      "label": "Efficiency",
-      "description": "Cut time cost and raise quality \u2014 accuracy and completeness \u2014 across all existing delivery work.",
-      "status": "active",
-      "progress": 5,
-      "targetDate": "2026-09-30",
-      "colour": "#03692F",
-      "completedTasks": [
-        {
-          "date": "11 Jun 2026 (Thu)",
-          "task": "Team meeting"
-        },
-        {
-          "date": "12 Jun 2026 (Fri)",
-          "task": "VPN and Claude (team plan) subscribed"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Phase 2",
-      "label": "Data Visualisation",
-      "description": "Dashboards and exception reports so management can see WIP, deadlines and capacity at a glance.",
-      "status": "pending",
-      "progress": 0,
-      "targetDate": "2026-12-31",
-      "colour": "#1B6E8C",
-      "completedTasks": []
-    },
-    {
-      "id": 3,
-      "name": "Phase 3",
-      "label": "Client Acquisition",
-      "description": "Lead generation, conversion and CRM \u2014 fill new capacity with higher-value work.",
-      "status": "pending",
-      "progress": 0,
-      "targetDate": "2027-03-31",
-      "colour": "#1B3A5B",
-      "completedTasks": []
-    }
-  ],
-  "operations": [
-    {
-      "id": 1,
-      "phase": 1,
-      "name": "Review proforma FS before Partner review",
-      "tool": "Cowork (hk-audit-review)",
-      "timeSaved": "High",
-      "risk": "Med",
-      "status": "not-started",
-      "owner": "",
-      "targetDate": "",
-      "pilotDate": "",
-      "estimatedHoursSaved": 6,
-      "actualHoursSaved": null,
-      "notes": "Use hk-audit-review skill to catch errors in proforma FS before submission to Adonis. First pilot recommended.",
-      "conditions": "Requires: FS in PDF/Word format; client name redacted; Adonis reviews all output before sign-off.",
-      "ref": "A1",
-      "category": "Audit & Tax",
-      "priority": 3
-    },
-    {
-      "id": 2,
-      "phase": 1,
-      "name": "Cross-check tax notes / report / balance sheet for consistency",
-      "tool": "Cowork",
-      "timeSaved": "High",
-      "risk": "Low",
-      "status": "not-started",
-      "owner": "",
-      "targetDate": "",
-      "pilotDate": "",
-      "estimatedHoursSaved": 3,
-      "actualHoursSaved": null,
-      "notes": "Claude cross-references tax notes, auditor's report and balance sheet for numerical and disclosure consistency.",
-      "conditions": "Requires: complete draft FS set; identifiers redacted where possible.",
-      "ref": "A2",
-      "category": "Audit & Tax",
-      "priority": 3
-    },
-    {
-      "id": 3,
-      "phase": 1,
-      "name": "Draft audit completion memo (Section B)",
-      "tool": "Cowork (skill)",
-      "timeSaved": "Med",
-      "risk": "Med",
-      "status": "not-started",
-      "owner": "",
-      "targetDate": "",
-      "pilotDate": "",
-      "estimatedHoursSaved": 4,
-      "actualHoursSaved": null,
-      "notes": "Use audit-completion-memo skill to produce Section B ACM for Adonis review.",
-      "conditions": "Requires: proforma FS, profits tax computation, lead schedules uploaded. Trigger with keyword 'Section B'.",
-      "ref": "A3",
-      "category": "Audit & Tax",
-      "priority": 3
-    },
-    {
-      "id": 4,
-      "phase": 1,
-      "name": "Generate Xero year-end manual journal CSV",
-      "tool": "Claude Code (skill)",
-      "timeSaved": "High",
-      "risk": "Low",
-      "status": "not-started",
-      "owner": "",
-      "targetDate": "",
-      "pilotDate": "",
-      "estimatedHoursSaved": 5,
-      "actualHoursSaved": null,
-      "notes": "Use xero-yearend-journal skill to produce importable CSV from TB movement. UTF-8 BOM, DD/MM/YYYY format.",
-      "conditions": "Requires: prior year Xero TB export + current year financials + Xero journal template.",
-      "ref": "A4",
-      "category": "Accounting",
-      "priority": 3
-    },
-    {
-      "id": 5,
-      "phase": 1,
-      "name": "AP4.1 \u2014 better staff input UI; AI fills the program's spreadsheets",
-      "tool": "Claude Code (UI + xlsx)",
-      "timeSaved": "High",
-      "risk": "Med",
-      "status": "not-started",
-      "owner": "",
-      "targetDate": "",
-      "pilotDate": "",
-      "estimatedHoursSaved": 8,
-      "actualHoursSaved": null,
-      "notes": "Build a clean HTML input form for audit staff; Claude Code populates AP4.1 spreadsheets via openpyxl. Replaces manual data entry across multiple sheets.",
-      "conditions": "Requires: mapping of all AP4.1 spreadsheet fields; confirmation of file format (xlsx); pilot on one engagement first.",
-      "ref": "A5",
-      "category": "Audit & Tax",
-      "priority": 3
-    },
-    {
-      "id": 6,
-      "phase": 1,
-      "name": "Prepare employer's returns (BIR56A / 56B)",
-      "tool": "Cowork",
-      "timeSaved": "Med",
-      "risk": "Low",
-      "status": "not-started",
-      "owner": "",
-      "targetDate": "",
-      "pilotDate": "",
-      "estimatedHoursSaved": 3,
-      "actualHoursSaved": null,
-      "notes": "Claude drafts BIR56A/56B from payroll data; staff verify against HR records before submission.",
-      "conditions": "Requires: payroll data in structured format; personal data minimised.",
-      "ref": "A6",
-      "category": "Audit & Tax",
-      "priority": 3
-    },
-    {
-      "id": 7,
-      "phase": 1,
-      "name": "Draft bilingual client emails & WhatsApp messages",
-      "tool": "Cowork",
-      "timeSaved": "Med",
-      "risk": "Low",
-      "status": "not-started",
-      "owner": "",
-      "targetDate": "",
-      "pilotDate": "",
-      "estimatedHoursSaved": 2,
-      "actualHoursSaved": null,
-      "notes": "Claude drafts formal English emails and Cantonese WhatsApp messages. Staff review tone and accuracy before sending.",
-      "conditions": "No client confidential data in the draft prompt; use generalised scenario with specifics added by staff post-draft.",
-      "ref": "A7",
-      "category": "Admin",
-      "priority": 3
-    },
-    {
-      "id": 8,
-      "phase": 1,
-      "name": "Draft minutes, resolutions & statutory forms",
-      "tool": "Cowork",
-      "timeSaved": "Med",
-      "risk": "Med",
-      "status": "not-started",
-      "owner": "",
-      "targetDate": "",
-      "pilotDate": "",
-      "estimatedHoursSaved": 3,
-      "actualHoursSaved": null,
-      "notes": "Claude drafts board minutes, written resolutions and statutory forms (e.g. NNC1, ND2A). CDD verification remains manual.",
-      "conditions": "Requires: meeting agenda or resolution details; CDD verification by staff against independent sources; no STR matters.",
-      "ref": "A8",
-      "category": "Company Secretary",
-      "priority": 3
-    }
-  ],
-  "team": [
-    {
-      "name": "Adonis",
-      "role": "Partner \u2014 final review & sign-off"
-    },
-    {
-      "name": "Ambrose",
-      "role": "Planning consultant"
-    },
-    {
-      "name": "May",
-      "role": "Manager - Co Sec and Admin"
-    },
-    {
-      "name": "Jaden",
-      "role": "Audit staff"
-    },
-    {
-      "name": "Diana",
-      "role": "Accounting staff"
-    }
-  ]
-};
-  DATA = EMBEDDED_DATA;
+  // 1. Load static config from data.json
+  const res = await fetch('data.json?v=' + Date.now());
+  DATA = await res.json();
 
-  // 2. Load live operations from Supabase
-  const { data: ops, error } = await sb
-    .from('phase1_operations')
-    .select('*')
-    .order('id');
-
+  // 2. Load live operations from Supabase REST
+  const { data: ops, error } = await sbSelect('phase1_operations', 'select=*&order=id');
   if (error) {
-    console.warn('Supabase error — falling back to data.json:', error.message);
+    // Silent — fall back to data.json; show status indicator
+    setSbStatus('offline');
   } else if (ops && ops.length > 0) {
+    setSbStatus('online');
     DATA.operations = ops.map(op => ({
       id:                   op.id,
       ref:                  op.ref,
@@ -1151,27 +502,27 @@ async function init() {
       actualHoursSaved:     op.actual_hours_saved,
       notes:                op.notes || '',
       conditions:           op.conditions || '',
+      category:             op.category || 'Audit & Tax',
+      priority:             op.priority || 3,
+      description:          op.description || op.notes || '',
     }));
   }
 
-  // 3. Load time cost savings from Supabase, fall back to localStorage
-  const { data: costs, error: costErr } = await sb
-    .from('time_cost_savings')
-    .select('*');
-
+  // 3. Load cost data from Supabase REST, fall back to localStorage
+  const { data: costs, error: costErr } = await sbSelect('time_cost_savings', 'select=*');
   if (!costErr && costs && costs.length > 0) {
     COST_MAP = {};
     costs.forEach(c => { COST_MAP[c.operation_id] = c; });
   } else {
-    // Fall back to localStorage
     try {
-      const local = JSON.parse(localStorage.getItem('cost_map') || '{}');
-      COST_MAP = local;
-      if (costErr) console.warn('Supabase cost load failed, using localStorage:', costErr.message);
+      COST_MAP = JSON.parse(localStorage.getItem('cost_map') || '{}');
     } catch(e) { COST_MAP = {}; }
   }
 
-  // Apply any locally saved op edits (name / category / priority)
+  // 4. Load phase tasks from Supabase / localStorage
+  await loadAllTasks();
+
+  // 5. Apply locally saved op edits
   try {
     const edits = JSON.parse(localStorage.getItem('op_edits') || '{}');
     DATA.operations.forEach(op => {
@@ -1187,128 +538,14 @@ async function init() {
   render();
 }
 
-// ── Cost modal functions ───────────────────────────────────
-function openCostModal(opId) {
-  const op = DATA.operations.find(o => o.id === opId);
-  if (!op) return;
-  CURRENT_COST_OP = op;
 
-  document.getElementById('cost-modal-title').textContent = `💰 Time Cost Saved — ${op.ref}: ${op.name}`;
-  document.getElementById('cost-modal-subtitle').textContent =
-    `Enter actual hours saved per grade and the hourly rate (HKD) for this operation.`;
 
-  // Pre-fill if data exists
-  const existing = COST_MAP[opId];
-  ['staff','manager','partner'].forEach(g => {
-    document.getElementById(`cost-${g}-hours`).value = existing ? (existing[`${g}_hours`] || '') : '';
-    document.getElementById(`cost-${g}-rate`).value  = existing ? (existing[`${g}_rate`]  || '') : '';
-  });
-  document.getElementById('cost-notes').value = existing ? (existing.notes || '') : '';
-  recalcCostModal();
-  document.getElementById('cost-modal-overlay').classList.add('open');
-}
-
-function closeCostModal() {
-  document.getElementById('cost-modal-overlay').classList.remove('open');
-  CURRENT_COST_OP = null;
-}
-function closeCostModalOutside(e) {
-  if (e.target === document.getElementById('cost-modal-overlay')) closeCostModal();
-}
 
 function fmtHKD(n) {
   return 'HK$' + Number(n || 0).toLocaleString('en-HK', {minimumFractionDigits:0, maximumFractionDigits:0});
 }
 
-function recalcCostModal() {
-  let grand = 0;
-  ['staff','manager','partner'].forEach(g => {
-    const h = parseFloat(document.getElementById(`cost-${g}-hours`).value) || 0;
-    const r = parseFloat(document.getElementById(`cost-${g}-rate`).value)  || 0;
-    const sub = h * r;
-    grand += sub;
-    document.getElementById(`cost-${g}-total`).textContent = fmtHKD(sub);
-  });
-  document.getElementById('cost-grand-total').textContent = fmtHKD(grand);
-}
 
-async function saveCostData() {
-  if (!CURRENT_COST_OP) return;
-  const opId = CURRENT_COST_OP.id;
-
-  const sh = parseFloat(document.getElementById('cost-staff-hours').value)   || 0;
-  const sr = parseFloat(document.getElementById('cost-staff-rate').value)    || 0;
-  const mh = parseFloat(document.getElementById('cost-manager-hours').value) || 0;
-  const mr = parseFloat(document.getElementById('cost-manager-rate').value)  || 0;
-  const ph = parseFloat(document.getElementById('cost-partner-hours').value) || 0;
-  const pr = parseFloat(document.getElementById('cost-partner-rate').value)  || 0;
-  const notes = document.getElementById('cost-notes').value.trim();
-
-  const localRecord = {
-    operation_id:  opId,
-    staff_hours:   sh,  staff_rate:   sr,
-    manager_hours: mh,  manager_rate: mr,
-    partner_hours: ph,  partner_rate: pr,
-    total_cost:    (sh*sr) + (mh*mr) + (ph*pr),
-    notes,
-  };
-
-  // ── Always save to localStorage first (instant, never fails) ──
-  try {
-    const all = JSON.parse(localStorage.getItem('cost_map') || '{}');
-    all[opId] = localRecord;
-    localStorage.setItem('cost_map', JSON.stringify(all));
-  } catch(e) { console.warn('localStorage save failed:', e); }
-
-  // ── Update in-memory COST_MAP immediately ──
-  COST_MAP[opId] = localRecord;
-
-  // ── Try Supabase (best-effort, non-blocking) ──
-  const saveBtn = document.querySelector('#cost-modal-overlay .btn-save');
-  const origText = saveBtn.textContent;
-  saveBtn.textContent = 'Saving…';
-  saveBtn.disabled = true;
-
-  let supabaseOk = false;
-  try {
-    // Delete existing row first (avoids unique conflict issues)
-    await sb.from('time_cost_savings').delete().eq('operation_id', opId);
-
-    // Fresh insert
-    const { error: insertErr } = await sb
-      .from('time_cost_savings')
-      .insert({
-        operation_id:  opId,
-        staff_hours:   sh,  staff_rate:   sr,
-        manager_hours: mh,  manager_rate: mr,
-        partner_hours: ph,  partner_rate: pr,
-        notes,
-      });
-
-    if (insertErr) {
-      console.error('Supabase insert error:', insertErr);
-      alert('⚠️ Supabase save failed: ' + insertErr.message +
-        '\n\nYour data has been saved locally in this browser and will still appear in the table.');
-    } else {
-      supabaseOk = true;
-    }
-  } catch(e) {
-    console.error('Supabase exception:', e);
-    alert('⚠️ Could not reach Supabase: ' + e.message +
-      '\n\nYour data has been saved locally and will still appear in the table.');
-  }
-
-  saveBtn.textContent = supabaseOk ? '✓ Saved' : '✓ Saved locally';
-  saveBtn.style.background = supabaseOk ? 'var(--green)' : '#C8860A';
-  setTimeout(() => {
-    saveBtn.textContent = origText;
-    saveBtn.style.background = '';
-    saveBtn.disabled = false;
-  }, 1800);
-
-  closeCostModal();
-  renderOpsTable();
-}
 
 function updateGrandTotalCell() {
   const cell = document.getElementById('ops-grand-total-cell');
@@ -1325,135 +562,35 @@ function updateGrandTotalCell() {
   cell.textContent = grand > 0 ? fmtHKD(grand) : '—';
 }
 
-function renderCostSummary() {
-  const ops = DATA.operations;
-  if (!ops || !ops.length) return;
-
-  const rows = ops.map(op => {
-    const c = COST_MAP[op.id];
-    if (!c) return null;
-    // Use stored total_cost if available, otherwise compute client-side
-    const total = Number(c.total_cost) ||
-      (Number(c.staff_hours||0)   * Number(c.staff_rate||0)) +
-      (Number(c.manager_hours||0) * Number(c.manager_rate||0)) +
-      (Number(c.partner_hours||0) * Number(c.partner_rate||0));
-    if (!total) return null;
-    return { ref: op.ref, name: op.name, c, total };
-  }).filter(Boolean);
-
-  if (!rows.length) {
-    document.getElementById('cost-summary-content').innerHTML =
-      `<div style="font-size:13px;color:var(--muted);font-style:italic">No cost data entered yet. Click 💰 on any operation to add.</div>`;
-    return;
-  }
-
-  const grandTotal = rows.reduce((s, r) => s + r.total, 0);
-
-  const tableRows = rows.map((r, idx) => `
-    <tr style="border-bottom:1px solid var(--border);background:${idx%2===0?'transparent':'var(--green-tint)'}">
-      <td style="padding:7px 10px 7px 0;font-weight:600;color:var(--green-dk);white-space:nowrap">${r.ref}</td>
-      <td style="padding:7px 10px;font-size:12.5px;color:var(--txt)">${r.name}</td>
-      <td style="padding:7px 10px;text-align:right;color:var(--muted);font-size:12px">
-        ${Number(r.c.staff_hours)   ? r.c.staff_hours   + 'h @ ' + fmtHKD(r.c.staff_rate)   : '—'}
-      </td>
-      <td style="padding:7px 10px;text-align:right;color:var(--muted);font-size:12px">
-        ${Number(r.c.manager_hours) ? r.c.manager_hours + 'h @ ' + fmtHKD(r.c.manager_rate) : '—'}
-      </td>
-      <td style="padding:7px 10px;text-align:right;color:var(--muted);font-size:12px">
-        ${Number(r.c.partner_hours) ? r.c.partner_hours + 'h @ ' + fmtHKD(r.c.partner_rate) : '—'}
-      </td>
-      <td style="padding:7px 0;text-align:right;font-weight:700;color:var(--green-dk)">${fmtHKD(r.total)}</td>
-    </tr>
-  `).join('');
-
-  document.getElementById('cost-summary-content').innerHTML = `
-    <table style="width:100%;border-collapse:collapse;font-size:13px">
-      <thead>
-        <tr style="border-bottom:2px solid var(--border)">
-          <th style="text-align:left;padding:6px 10px 6px 0;color:var(--green-dk);font-weight:600;width:48px">Ref</th>
-          <th style="text-align:left;padding:6px 10px;color:var(--green-dk);font-weight:600">Operation</th>
-          <th style="text-align:right;padding:6px 10px;color:var(--green-dk);font-weight:600;width:150px">Staff</th>
-          <th style="text-align:right;padding:6px 10px;color:var(--green-dk);font-weight:600;width:150px">Manager</th>
-          <th style="text-align:right;padding:6px 10px;color:var(--green-dk);font-weight:600;width:150px">Partner</th>
-          <th style="text-align:right;padding:6px 0;color:var(--green-dk);font-weight:600;width:110px">Total (HKD)</th>
-        </tr>
-      </thead>
-      <tbody>${tableRows}</tbody>
-      <tfoot>
-        <tr style="border-top:2px solid var(--green);background:var(--green-lt)">
-          <td colspan="5" style="padding:10px 8px 10px 0;font-weight:700;color:var(--green-dk)">Grand total — all operations</td>
-          <td style="padding:10px 0;text-align:right;font-size:18px;font-weight:700;color:var(--green)">${fmtHKD(grandTotal)}</td>
-        </tr>
-      </tfoot>
-    </table>
-  `;
-  updateGrandTotalCell();
-}
 
 async function updateStatus(id, newStatus) {
   const op = DATA.operations.find(o => o.id === id);
   if (op) op.status = newStatus;
   renderChart();
   renderKPIs();
-  const { error } = await sb
-    .from('phase1_operations')
-    .update({ status: newStatus })
-    .eq('id', id);
+  const { error } = await sbUpdate('phase1_operations', { status: newStatus }, { id });
   if (error) alert('Failed to save status: ' + error.message);
   else document.getElementById('sb-updated').textContent = new Date().toLocaleDateString('en-GB');
 }
 
-// ── Edit Operation modal ───────────────────────────────────
-function openEditOpModal(opId) {
-  const op = DATA.operations.find(o => o.id === opId);
-  if (!op) return;
-  document.getElementById('edit-op-id').value       = opId;
-  document.getElementById('edit-op-name').value     = op.name || '';
-  document.getElementById('edit-op-category').value = op.category || 'Audit & Tax';
-  document.getElementById('edit-op-priority').value = op.priority || 3;
-  document.getElementById('edit-op-modal-overlay').classList.add('open');
-}
-
-function closeEditOpModal() {
-  document.getElementById('edit-op-modal-overlay').classList.remove('open');
-}
-
-function closeEditOpModalOutside(e) {
-  if (e.target === document.getElementById('edit-op-modal-overlay')) closeEditOpModal();
-}
-
-async function saveEditOp() {
-  const opId    = parseInt(document.getElementById('edit-op-id').value);
-  const name     = document.getElementById('edit-op-name').value.trim();
-  const category = document.getElementById('edit-op-category').value;
-  const priority = parseInt(document.getElementById('edit-op-priority').value);
-  if (!name) { alert('Please enter an operation name.'); return; }
-
-  // Update in-memory
-  const op = DATA.operations.find(o => o.id === opId);
-  if (op) { op.name = name; op.category = category; op.priority = priority; }
-
-  // Save to localStorage
+async function updatePriority(id, newPriority) {
+  const op = DATA.operations.find(o => o.id === id);
+  if (op) op.priority = newPriority;
+  // Save locally
   try {
-    const stored = JSON.parse(localStorage.getItem('op_edits') || '{}');
-    stored[opId] = { name, category, priority };
-    localStorage.setItem('op_edits', JSON.stringify(stored));
+    const edits = JSON.parse(localStorage.getItem('op_edits') || '{}');
+    if (!edits[id]) edits[id] = {};
+    edits[id].priority = newPriority;
+    localStorage.setItem('op_edits', JSON.stringify(edits));
   } catch(e) {}
-
-  // Save to Supabase (best-effort)
-  const btn = document.getElementById('edit-op-save-btn');
-  btn.textContent = 'Saving…'; btn.disabled = true;
-  const { error } = await sb
-    .from('phase1_operations')
-    .update({ name, category: category, priority })
-    .eq('id', opId);
-  btn.textContent = error ? '✓ Saved locally' : '✓ Saved';
-  btn.style.background = error ? '#C8860A' : 'var(--green)';
-  setTimeout(() => { btn.textContent = 'Save'; btn.style.background = ''; btn.disabled = false; }, 1600);
-
-  closeEditOpModal();
-  renderOpsTable();
+  // Sync to Supabase
+  const { error } = await sbUpdate('phase1_operations', { priority: newPriority }, { id });
+  if (error) console.warn('Priority save failed:', error.message);
 }
+
+
+
+
 
 function toggleRoadmap() {
   const panel = document.getElementById('roadmap-panel');
@@ -1482,6 +619,7 @@ function render() {
   renderKPIs();
   renderPhaseTabs();
   renderOpsTable();
+  renderBUSummary();
   renderDecisions();
   renderChart();
   renderTeam();
@@ -1509,42 +647,92 @@ function renderKPIs() {
   `).join('');
 }
 
-// ── Tasks storage (localStorage, keyed per phase) ─────────
+// ── Tasks — Supabase + localStorage ───────────────────────
+let TASKS_CACHE = {};   // keyed by phase_id, loaded on init
+
+async function loadAllTasks() {
+  const { data, error } = await sbSelect('phase_tasks', 'select=*&order=created_at');
+  if (!error && data && data.length > 0) {
+    TASKS_CACHE = {};
+    data.forEach(t => {
+      if (!TASKS_CACHE[t.phase_id]) TASKS_CACHE[t.phase_id] = [];
+      TASKS_CACHE[t.phase_id].push({ id: t.id, date: t.date, task: t.task });
+    });
+    // Sync to localStorage
+    [1,2,3].forEach(pid => {
+      try { localStorage.setItem(`phase_tasks_${pid}`, JSON.stringify(TASKS_CACHE[pid] || [])); } catch(e) {}
+    });
+  } else {
+    // Fall back to localStorage
+    [1,2,3].forEach(pid => {
+      try {
+        const stored = localStorage.getItem(`phase_tasks_${pid}`);
+        TASKS_CACHE[pid] = stored ? JSON.parse(stored) : [];
+      } catch(e) { TASKS_CACHE[pid] = []; }
+      // Seed Phase 1 defaults if empty
+      if (pid === 1 && TASKS_CACHE[1].length === 0) {
+        TASKS_CACHE[1] = [
+          { date: '11 Jun 2026 (Thu)', task: 'Team meeting' },
+          { date: '12 Jun 2026 (Fri)', task: 'VPN and Claude (team plan) subscribed' },
+        ];
+      }
+    });
+  }
+}
+
 function getTasksForPhase(phaseId) {
-  try {
-    const stored = localStorage.getItem(`phase_tasks_${phaseId}`);
-    if (stored) return JSON.parse(stored);
-  } catch(e) {}
-  // Fall back to data.json
-  const ph = DATA.phases.find(p => p.id === phaseId);
-  return (ph && ph.completedTasks) ? ph.completedTasks : [];
+  return TASKS_CACHE[phaseId] || [];
 }
 
 function saveTasksForPhase(phaseId, tasks) {
-  try {
-    localStorage.setItem(`phase_tasks_${phaseId}`, JSON.stringify(tasks));
-  } catch(e) {}
+  TASKS_CACHE[phaseId] = tasks;
+  try { localStorage.setItem(`phase_tasks_${phaseId}`, JSON.stringify(tasks)); } catch(e) {}
 }
 
-function addTask(phaseId) {
-  const dateEl = document.getElementById(`new-task-date-${phaseId}`);
-  const taskEl = document.getElementById(`new-task-name-${phaseId}`);
-  const date = dateEl.value.trim();
-  const task = taskEl.value.trim();
+async function addTask(phaseId) {
+  const dateEl   = document.getElementById(`new-task-date-${phaseId}`);
+  const taskEl   = document.getElementById(`new-task-name-${phaseId}`);
+  const memberEl = document.getElementById(`new-task-member-${phaseId}`);
+  const date     = dateEl.value.trim();
+  const task     = taskEl.value.trim();
+  const added_by = memberEl ? memberEl.value : '';
   if (!date || !task) { alert('Please enter both a date and a task description.'); return; }
+
+  const btn = document.querySelector(`#tasks-section-${phaseId} button`);
+  if (btn) { btn.textContent = 'Saving…'; btn.disabled = true; }
+
+  // Try Supabase first
+  const { data: inserted, error } = await sbInsert('phase_tasks', {
+    phase_id: phaseId, date, task, added_by
+  });
+
+  let newTask = { date, task, added_by };
+  if (!error && inserted && inserted.length > 0) {
+    newTask = { id: inserted[0].id, date, task, added_by };
+  }
+
+  // Update cache & localStorage
   const tasks = getTasksForPhase(phaseId);
-  tasks.push({ date, task });
+  tasks.push(newTask);
   saveTasksForPhase(phaseId, tasks);
+
   dateEl.value = '';
   taskEl.value = '';
+  if (memberEl) memberEl.value = '';
   renderTasksTable(phaseId);
+
+  if (btn) { btn.textContent = '+ Add'; btn.disabled = false; }
 }
 
-function updateTaskField(phaseId, rowIndex, field, value) {
+async function updateTaskField(phaseId, rowIndex, field, value) {
   const tasks = getTasksForPhase(phaseId);
-  if (tasks[rowIndex]) {
-    tasks[rowIndex][field] = value;
-    saveTasksForPhase(phaseId, tasks);
+  if (!tasks[rowIndex]) return;
+  tasks[rowIndex][field] = value;
+  saveTasksForPhase(phaseId, tasks);
+  // Sync to Supabase if task has a DB id
+  const t = tasks[rowIndex];
+  if (t.id) {
+    await sbUpdate('phase_tasks', { [field]: value }, { id: t.id });
   }
 }
 
@@ -1553,32 +741,43 @@ function renderTasksTable(phaseId) {
   const container = document.getElementById(`tasks-section-${phaseId}`);
   if (!container) return;
 
+  const members = (DATA.team || []).map(m => m.name);
+  const memberOpts = (sel='') => ['', ...members]
+    .map(m => `<option value="${m}" ${m===sel?'selected':''}>${m||'— select —'}</option>`)
+    .join('');
+
   const rows = tasks.map((t, i) => `
     <tr style="border-bottom:1px solid var(--border);background:${i%2===0?'transparent':'var(--green-tint)'}">
-      <td style="padding:4px 8px 4px 0;vertical-align:middle;width:190px">
+      <td style="padding:4px 8px 4px 0;vertical-align:middle;width:175px">
         <input
-          value="${t.date.replace(/"/g,'&quot;')}"
+          value="${(t.date||'').replace(/"/g,'&quot;')}"
           onchange="updateTaskField(${phaseId},${i},'date',this.value)"
           style="width:100%;border:1px solid transparent;border-radius:5px;padding:4px 7px;font-size:12.5px;color:var(--muted);background:transparent;font-family:inherit;cursor:text"
           onfocus="this.style.borderColor='var(--green)';this.style.background='var(--card)'"
           onblur="this.style.borderColor='transparent';this.style.background='transparent'"
-          title="Click to edit date"
-        >
+          title="Click to edit date">
       </td>
-      <td style="padding:4px 0;vertical-align:middle">
+      <td style="padding:4px 8px;vertical-align:middle">
         <input
-          value="${t.task.replace(/"/g,'&quot;')}"
+          value="${(t.task||'').replace(/"/g,'&quot;')}"
           onchange="updateTaskField(${phaseId},${i},'task',this.value)"
           style="width:100%;border:1px solid transparent;border-radius:5px;padding:4px 7px;font-size:12.5px;color:var(--txt);background:transparent;font-family:inherit;cursor:text"
           onfocus="this.style.borderColor='var(--green)';this.style.background='var(--card)'"
           onblur="this.style.borderColor='transparent';this.style.background='transparent'"
-          title="Click to edit task"
-        >
+          title="Click to edit task">
+      </td>
+      <td style="padding:4px 0;vertical-align:middle;width:130px">
+        <select
+          onchange="updateTaskField(${phaseId},${i},'added_by',this.value)"
+          style="width:100%;border:1px solid var(--border);border-radius:5px;padding:4px 7px;
+                 font-size:12px;font-family:inherit;color:var(--txt);background:var(--bg);cursor:pointer">
+          ${memberOpts(t.added_by||'')}
+        </select>
       </td>
     </tr>
   `).join('');
 
-  const emptyMsg = `<tr><td colspan="2" style="padding:12px 0;font-size:13px;color:var(--muted);font-style:italic">No tasks recorded yet. Add one below.</td></tr>`;
+  const emptyMsg = `<tr><td colspan="3" style="padding:12px 0;font-size:13px;color:var(--muted);font-style:italic">No tasks recorded yet. Add one below.</td></tr>`;
 
   container.innerHTML = `
     <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px">
@@ -1588,8 +787,9 @@ function renderTasksTable(phaseId) {
     <table style="width:100%;border-collapse:collapse;font-size:13px">
       <thead>
         <tr style="border-bottom:2px solid var(--border)">
-          <th style="text-align:left;padding:6px 10px 6px 0;color:var(--green-dk);font-weight:600;width:190px">Date</th>
-          <th style="text-align:left;padding:6px 0;color:var(--green-dk);font-weight:600">Task completed</th>
+          <th style="text-align:left;padding:6px 10px 6px 0;color:var(--green-dk);font-weight:600;width:175px">Date</th>
+          <th style="text-align:left;padding:6px 8px;color:var(--green-dk);font-weight:600">Task completed</th>
+          <th style="text-align:left;padding:6px 0;color:var(--green-dk);font-weight:600;width:130px">Added / Edited by</th>
         </tr>
       </thead>
       <tbody>${tasks.length > 0 ? rows : emptyMsg}</tbody>
@@ -1597,17 +797,20 @@ function renderTasksTable(phaseId) {
     <!-- Add row -->
     <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
       <input id="new-task-date-${phaseId}" type="text" placeholder="e.g. 15 Jun 2026 (Mon)"
-        style="width:190px;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:12.5px;font-family:inherit;color:var(--txt);background:var(--bg)"
+        style="width:175px;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:12.5px;font-family:inherit;color:var(--txt);background:var(--bg)"
         onkeydown="if(event.key==='Enter')addTask(${phaseId})">
       <input id="new-task-name-${phaseId}" type="text" placeholder="Task description…"
         style="flex:1;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:12.5px;font-family:inherit;color:var(--txt);background:var(--bg)"
         onkeydown="if(event.key==='Enter')addTask(${phaseId})">
+      <select id="new-task-member-${phaseId}"
+        style="width:130px;border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:12px;font-family:inherit;color:var(--txt);background:var(--bg)">
+        ${memberOpts()}
+      </select>
       <button onclick="addTask(${phaseId})"
         style="background:var(--green);color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap">
         + Add
       </button>
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-top:6px">Edits are saved automatically in your browser. To share with the team, update <code>data.json</code>.</div>
   `;
 }
 
@@ -1655,118 +858,350 @@ const CAT_ORDER = ['Audit & Tax', 'Accounting', 'Company Secretary', 'Admin'];
 const CAT_ICON  = { 'Audit & Tax': '🔍', 'Accounting': '🧾', 'Company Secretary': '🏢', 'Admin': '💬' };
 const CAT_COLOR = { 'Audit & Tax': '#03692F', 'Accounting': '#1B6E8C', 'Company Secretary': '#534AB7', 'Admin': '#C8860A' };
 
+let CURRENT_OP_INDEX = 0;
+
 function renderOpsTable() {
-  // Group operations by category, preserving CAT_ORDER
-  const groups = {};
-  CAT_ORDER.forEach(cat => { groups[cat] = []; });
-  DATA.operations.forEach((op, i) => {
-    const cat = op.category || 'Admin';
-    if (!groups[cat]) groups[cat] = [];
-    groups[cat].push({ op, i });
-  });
-
-  let html = '';
-  CAT_ORDER.forEach(cat => {
-    const items = groups[cat];
-    if (!items.length) return;
-
-    const colour = CAT_COLOR[cat];
-    const icon   = CAT_ICON[cat];
-
-    // Category header row
-    html += `
-    <tr>
-      <td colspan="8" style="background:${colour}14;border-left:4px solid ${colour};padding:7px 14px;">
-        <span style="font-size:12px;font-weight:700;color:${colour};letter-spacing:.06em;text-transform:uppercase">
-          ${icon} ${cat}
-        </span>
-      </td>
-    </tr>`;
-
-    items.forEach(({ op, i }) => {
-      const c = COST_MAP[op.id];
-      const total = c
-        ? (Number(c.total_cost) ||
-           (Number(c.staff_hours||0)   * Number(c.staff_rate||0)) +
-           (Number(c.manager_hours||0) * Number(c.manager_rate||0)) +
-           (Number(c.partner_hours||0) * Number(c.partner_rate||0)))
-        : null;
-      const costCell = total
-        ? `<span style="font-weight:700;color:var(--green-dk)">${fmtHKD(total)}</span>`
-        : `<span style="font-size:11px;color:#bbb;font-style:italic">—</span>`;
-
-      html += `
-    <tr onclick="toggleDetail(${i})" title="Click to expand details">
-      <td style="text-align:center">
-        <span style="display:inline-block;background:#EAF3EC;color:#024A21;font-size:11px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.03em">${op.ref || 'A' + (i+1)}</span>
-        ${op.priority ? `<div style="font-size:10px;color:var(--muted);margin-top:2px">P${op.priority}</div>` : ''}
-      </td>
-      <td>
-        <div class="op-name">${op.name}</div>
-        <div class="op-tool">${op.tool}</div>
-      </td>
-      <td style="text-align:right;font-size:12px;color:var(--muted)">
-        ${c && Number(c.staff_hours)   ? `${c.staff_hours}h @ ${fmtHKD(c.staff_rate)}`     : '—'}
-      </td>
-      <td style="text-align:right;font-size:12px;color:var(--muted)">
-        ${c && Number(c.manager_hours) ? `${c.manager_hours}h @ ${fmtHKD(c.manager_rate)}` : '—'}
-      </td>
-      <td style="text-align:right;font-size:12px;color:var(--muted)">
-        ${c && Number(c.partner_hours) ? `${c.partner_hours}h @ ${fmtHKD(c.partner_rate)}` : '—'}
-      </td>
-      <td onclick="event.stopPropagation()" style="text-align:right">${costCell}</td>
-      <td onclick="event.stopPropagation()">
-        <select
-          onchange="updateStatus(${op.id}, this.value)"
-          style="border:1px solid var(--border);border-radius:5px;padding:3px 6px;font-size:12px;font-family:inherit;color:var(--txt);background:var(--bg);cursor:pointer"
-        >
-          <option value="not-started" ${op.status==='not-started'?'selected':''}>Not started</option>
-          <option value="in-progress" ${op.status==='in-progress'?'selected':''}>In progress</option>
-          <option value="done"        ${op.status==='done'       ?'selected':''}>Done</option>
-        </select>
-      </td>
-      <td onclick="event.stopPropagation()" style="text-align:center;white-space:nowrap">
-        <button
-          onclick="openCostModal(${op.id})"
-          title="Enter time cost saved"
-          style="background:var(--green-lt);border:1px solid var(--border);border-radius:5px;padding:3px 7px;font-size:14px;cursor:pointer;line-height:1;margin-right:3px">
-          💰
-        </button>
-        <button
-          onclick="openEditOpModal(${op.id})"
-          title="Edit name, business unit or priority"
-          style="background:#F0F0F0;border:1px solid var(--border);border-radius:5px;padding:3px 7px;font-size:13px;cursor:pointer;line-height:1">
-          ✏️
-        </button>
-      </td>
-    </tr>
-    <tr class="op-detail-row" id="detail-${i}">
-      <td colspan="8" class="op-detail-cell">
-        <div class="op-detail-inner">
-          <div class="detail-block"><h4>📝 Notes</h4><p>${op.notes || '—'}</p></div>
-          <div class="detail-block"><h4>⚙️ Conditions of implementation</h4><p>${op.conditions || '—'}</p></div>
-          ${op.owner     ? `<div class="detail-block"><h4>👤 Owner</h4><p>${op.owner}</p></div>` : ''}
-          ${op.targetDate? `<div class="detail-block"><h4>📅 Target date</h4><p>${op.targetDate}</p></div>` : ''}
-          ${c && total   ? `<div class="detail-block"><h4>💰 Cost saved breakdown</h4>
-            <p>Staff: ${c.staff_hours}h × ${fmtHKD(c.staff_rate)} = ${fmtHKD(c.staff_hours*c.staff_rate)}</p>
-            <p>Manager: ${c.manager_hours}h × ${fmtHKD(c.manager_rate)} = ${fmtHKD(c.manager_hours*c.manager_rate)}</p>
-            <p>Partner: ${c.partner_hours}h × ${fmtHKD(c.partner_rate)} = ${fmtHKD(c.partner_hours*c.partner_rate)}</p>
-            <p style="font-weight:700;color:var(--green-dk);margin-top:4px">Total: ${fmtHKD(total)}</p>
-            ${c.notes ? `<p style="color:var(--muted);font-style:italic;margin-top:4px">${c.notes}</p>` : ''}
-          </div>` : ''}
-        </div>
-      </td>
-    </tr>`;
-    });
-  });
-
-  document.getElementById('ops-tbody').innerHTML = html;
+  renderOpDetail(CURRENT_OP_INDEX);
   updateGrandTotalCell();
 }
 
-function toggleDetail(i) {
-  const row = document.getElementById('detail-' + i);
-  row.classList.toggle('open');
+
+function selectOp(i) {
+  CURRENT_OP_INDEX = i;
+  renderOpDetail(i);
+}
+
+function renderOpDetail(i) {
+  const op = DATA.operations[i];
+  if (!op) return;
+  const panel = document.getElementById('op-detail-panel');
+  if (!panel) return;
+  const c  = COST_MAP[op.id] || {};
+  const sh = Number(c.staff_hours||0),   sr = Number(c.staff_rate||0);
+  const mh = Number(c.manager_hours||0), mr = Number(c.manager_rate||0);
+  const ph = Number(c.partner_hours||0), pr = Number(c.partner_rate||0);
+  const total = (sh*sr)+(mh*mr)+(ph*pr);
+  const CAT_COLOR_MAP = {'Audit & Tax':'#024A21','Accounting':'#1B6E8C','Company Secretary':'#534AB7','Admin':'#C8860A'};
+  const catColor = CAT_COLOR_MAP[op.category] || 'var(--green-dk)';
+  const statusOptions = ['not-started','in-progress','done'];
+  const statusLabels  = {'not-started':'Not started','in-progress':'In progress','done':'Done'};
+  const statusSel = statusOptions.map(s=>`<option value="${s}" ${op.status===s?'selected':''}>${statusLabels[s]}</option>`).join('');
+  const prev = i>0?`<button onclick="selectOp(${i-1})" style="background:none;border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--muted)">← Prev</button>`:'';
+  const next = i<DATA.operations.length-1?`<button onclick="selectOp(${i+1})" style="background:none;border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--muted)">Next →</button>`:'';
+  panel.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div style="display:flex;gap:8px">${prev}${next}</div>
+      <span style="font-size:12px;color:var(--muted)">${i+1} of ${DATA.operations.length}</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+      <span style="font-size:13px;font-weight:700;color:${catColor};background:white;border:2px solid ${catColor};border-radius:6px;padding:3px 12px;letter-spacing:.04em">${op.ref}</span>
+      <span style="font-size:11px;font-weight:600;color:${catColor};letter-spacing:.08em;text-transform:uppercase">${op.category}</span>
+    </div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--green-dk);margin-bottom:10px;line-height:1.3">${op.name}</h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px;border-left:3px solid var(--green-lt);padding-left:14px">${op.description||op.notes||'—'}</p>
+    <div style="display:flex;gap:24px;align-items:center;margin-bottom:28px;padding:12px 16px;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">Status</div>
+        <select onchange="updateStatus(${op.id},this.value)" style="border:1px solid var(--border);border-radius:6px;padding:5px 10px;font-size:13px;font-family:inherit;color:var(--txt);background:white;cursor:pointer">${statusSel}</select>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">Priority</div>
+        <select onchange="updatePriority(${op.id},parseInt(this.value))"
+          style="border:1px solid var(--border);border-radius:6px;padding:5px 10px;font-size:13px;
+                 font-family:inherit;color:var(--txt);background:white;cursor:pointer">
+          ${[1,2,3,4,5].map(p=>`<option value="${p}" ${(op.priority||3)===p?'selected':''}>${p} — ${{1:'Highest',2:'High',3:'Medium',4:'Low',5:'Lowest'}[p]}</option>`).join('')}
+        </select>
+      </div>
+      ${op.owner?`<div><div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">Owner</div><span style="font-size:14px;font-weight:600;color:var(--txt)">${op.owner}</span></div>`:''}
+    </div>
+    <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden">
+      <div style="background:var(--green-dk);padding:12px 18px;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-weight:700;font-size:13px;color:white;letter-spacing:.05em;text-transform:uppercase">💰 Time Cost Saved</span>
+        <div style="display:flex;gap:8px">
+          <button id="op-edit-btn-${op.id}" onclick="startCostEdit(${op.id})" style="background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.3);border-radius:5px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">✏️ Edit</button>
+          <button id="op-ok-btn-${op.id}" onclick="saveCostInline(${op.id})" style="display:none;background:#6EE7B7;color:#024A21;border:none;border-radius:5px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">✓ Save</button>
+        </div>
+      </div>
+      <div id="cost-read-${op.id}" style="padding:16px 18px">
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead><tr style="border-bottom:2px solid var(--border)">
+            <th style="text-align:left;padding:5px 10px 5px 0;color:var(--green-dk);font-weight:600;width:110px">Grade</th>
+            <th style="text-align:right;padding:5px 10px;color:var(--green-dk);font-weight:600">Hrs / job</th>
+            <th style="text-align:right;padding:5px 10px;color:var(--green-dk);font-weight:600">Rate (HKD/hr)</th>
+            <th style="text-align:right;padding:5px 0;color:var(--green-dk);font-weight:600">Cost saved / job (HKD)</th>
+          </tr></thead>
+          <tbody>${['Staff','Manager','Partner'].map((g,gi)=>{
+            const hrs=[sh,mh,ph][gi],rate=[sr,mr,pr][gi],sub=hrs*rate;
+            return `<tr style="border-bottom:1px solid var(--border);background:${gi%2?'var(--green-tint)':'transparent'}">
+              <td style="padding:8px 10px 8px 0;font-weight:600;color:var(--txt)">${g}</td>
+              <td style="padding:8px 10px;text-align:right;color:var(--muted)">${hrs||'—'}</td>
+              <td style="padding:8px 10px;text-align:right;color:var(--muted)">${rate?fmtHKD(rate):'—'}</td>
+              <td style="padding:8px 0;text-align:right;font-weight:${sub?700:400};color:${sub?'var(--green-dk)':'#bbb'}">${sub?fmtHKD(sub):'—'}</td>
+            </tr>`;
+          }).join('')}
+          <tr style="border-bottom:1px solid var(--border);background:var(--green-tint)">
+            <td colspan="3" style="padding:8px 10px 8px 0;font-weight:700;color:var(--green-dk)">Cost saved per job</td>
+            <td style="padding:8px 0;text-align:right;font-weight:700;color:var(--green-dk)">${total?fmtHKD(total):'—'}</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:transparent">
+            <td colspan="3" style="padding:8px 10px 8px 0;color:var(--txt)">
+              × &nbsp;<strong>Total number of jobs in a year</strong>
+            </td>
+            <td style="padding:8px 0;text-align:right;font-weight:600;color:var(--txt)">${Number(c.jobs_per_year||0)||'—'}</td>
+          </tr>
+          </tbody>
+          <tfoot><tr style="border-top:2px solid var(--green);background:var(--green-lt)">
+            <td colspan="3" style="padding:10px 10px 10px 0;font-weight:700;color:var(--green-dk)">Total cost saved per year</td>
+            <td style="padding:10px 0;text-align:right;font-size:17px;font-weight:700;color:var(--green)">
+              ${(total && Number(c.jobs_per_year||0)) ? fmtHKD(total * Number(c.jobs_per_year)) : '—'}
+            </td>
+          </tr></tfoot>
+        </table>
+        ${c.notes?`<div style="margin-top:10px;font-size:12px;color:var(--muted);font-style:italic">📝 ${c.notes}</div>`:''}
+      </div>
+      <div id="cost-edit-${op.id}" style="display:none;padding:16px 18px">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px">
+          <thead><tr style="border-bottom:2px solid var(--border)">
+            <th style="text-align:left;padding:5px 10px 5px 0;color:var(--green-dk);font-weight:600;width:110px">Grade</th>
+            <th style="text-align:left;padding:5px 10px;color:var(--green-dk);font-weight:600">Hrs / job</th>
+            <th style="text-align:left;padding:5px 10px;color:var(--green-dk);font-weight:600">Rate (HKD/hr)</th>
+            <th style="text-align:right;padding:5px 0;color:var(--green-dk);font-weight:600">Cost saved / job</th>
+          </tr></thead>
+          <tbody>${['Staff','Manager','Partner'].map((g,gi)=>{
+            const field=g.toLowerCase();
+            const hrs=[sh,mh,ph][gi]||'',rate=[sr,mr,pr][gi]||'';
+            return `<tr style="border-bottom:1px solid var(--border);background:${gi%2?'var(--green-tint)':'transparent'}">
+              <td style="padding:8px 10px 8px 0;font-weight:600;color:var(--txt)">${g}</td>
+              <td style="padding:6px 10px"><input type="number" id="ei-${op.id}-${field}-h" value="${hrs}" min="0" step="0.5" oninput="recalcInline(${op.id})" style="width:90px;border:1px solid var(--border);border-radius:5px;padding:4px 8px;font-size:13px;font-family:inherit"></td>
+              <td style="padding:6px 10px"><input type="number" id="ei-${op.id}-${field}-r" value="${rate}" min="0" step="50" oninput="recalcInline(${op.id})" style="width:100px;border:1px solid var(--border);border-radius:5px;padding:4px 8px;font-size:13px;font-family:inherit"></td>
+              <td style="padding:6px 0;text-align:right;font-weight:600;color:var(--green-dk)" id="ei-${op.id}-${field}-sub">—</td>
+            </tr>`;
+          }).join('')}
+          <tr style="border-bottom:1px solid var(--border);background:var(--green-tint)">
+            <td colspan="3" style="padding:8px 10px 8px 0;font-weight:700;color:var(--green-dk)">Cost saved per job</td>
+            <td style="padding:8px 0;text-align:right;font-weight:700;color:var(--green-dk)" id="ei-${op.id}-perjob">—</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:transparent">
+            <td colspan="2" style="padding:8px 10px 8px 0;font-weight:700;color:var(--txt)">Total number of jobs in a year</td>
+            <td colspan="2" style="padding:6px 0;text-align:right">
+              <input type="number" id="ei-${op.id}-jobs" value="${Number(c.jobs_per_year||0)||''}" min="1" step="1"
+                oninput="recalcInline(${op.id})"
+                style="width:100px;border:1px solid var(--border);border-radius:5px;padding:4px 8px;font-size:13px;font-family:inherit;text-align:right">
+            </td>
+          </tr>
+          </tbody>
+          <tfoot><tr style="border-top:2px solid var(--green);background:var(--green-lt)">
+            <td colspan="3" style="padding:10px 10px 10px 0;font-weight:700;color:var(--green-dk)">Total cost saved per year</td>
+            <td style="padding:10px 0;text-align:right;font-size:17px;font-weight:700;color:var(--green)" id="ei-${op.id}-total">—</td>
+          </tr></tfoot>
+        </table>
+        <div>
+          <label style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:5px">Notes (optional)</label>
+          <input type="text" id="ei-${op.id}-notes" value="${(c.notes||'').replace(/"/g,'&quot;')}" placeholder="e.g. Based on pilot engagement, Jun 2026" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:13px;font-family:inherit;color:var(--txt);background:var(--bg)">
+        </div>
+      </div>
+    </div>`;
+  recalcInline(op.id);
+}
+
+function startCostEdit(opId) {
+  document.getElementById(`cost-read-${opId}`).style.display='none';
+  document.getElementById(`cost-edit-${opId}`).style.display='block';
+  document.getElementById(`op-edit-btn-${opId}`).style.display='none';
+  document.getElementById(`op-ok-btn-${opId}`).style.display='inline-block';
+  recalcInline(opId);
+}
+
+function recalcInline(opId) {
+  let perJob = 0;
+  ['staff','manager','partner'].forEach(f => {
+    const h = parseFloat(document.getElementById(`ei-${opId}-${f}-h`)?.value) || 0;
+    const r = parseFloat(document.getElementById(`ei-${opId}-${f}-r`)?.value) || 0;
+    const sub = h * r; perJob += sub;
+    const el = document.getElementById(`ei-${opId}-${f}-sub`);
+    if (el) el.textContent = sub > 0 ? fmtHKD(sub) : '—';
+  });
+  const pjEl = document.getElementById(`ei-${opId}-perjob`);
+  if (pjEl) pjEl.textContent = perJob > 0 ? fmtHKD(perJob) : '—';
+  const jobs = parseFloat(document.getElementById(`ei-${opId}-jobs`)?.value) || 0;
+  const tot  = document.getElementById(`ei-${opId}-total`);
+  if (tot) tot.textContent = (perJob > 0 && jobs > 0) ? fmtHKD(perJob * jobs) : '—';
+}
+
+async function saveCostInline(opId) {
+  const btn=document.getElementById(`op-ok-btn-${opId}`);
+  btn.textContent='Saving…'; btn.disabled=true;
+  const sh=parseFloat(document.getElementById(`ei-${opId}-staff-h`)?.value)||0;
+  const sr=parseFloat(document.getElementById(`ei-${opId}-staff-r`)?.value)||0;
+  const mh=parseFloat(document.getElementById(`ei-${opId}-manager-h`)?.value)||0;
+  const mr=parseFloat(document.getElementById(`ei-${opId}-manager-r`)?.value)||0;
+  const ph=parseFloat(document.getElementById(`ei-${opId}-partner-h`)?.value)||0;
+  const pr=parseFloat(document.getElementById(`ei-${opId}-partner-r`)?.value)||0;
+  const jobs=parseFloat(document.getElementById(`ei-${opId}-jobs`)?.value)||0;
+  const notes=document.getElementById(`ei-${opId}-notes`)?.value?.trim()||'';
+  const perJob=(sh*sr)+(mh*mr)+(ph*pr);
+  const rec={operation_id:opId,staff_hours:sh,staff_rate:sr,manager_hours:mh,manager_rate:mr,
+             partner_hours:ph,partner_rate:pr,jobs_per_year:jobs,
+             total_cost:perJob*jobs, notes};
+  try{const all=JSON.parse(localStorage.getItem('cost_map')||'{}');all[opId]=rec;localStorage.setItem('cost_map',JSON.stringify(all));}catch(e){}
+  COST_MAP[opId]=rec;
+  await sbDelete('time_cost_savings',{operation_id:opId});
+  const {error}=await sbInsert('time_cost_savings',{operation_id:opId,staff_hours:sh,staff_rate:sr,
+    manager_hours:mh,manager_rate:mr,partner_hours:ph,partner_rate:pr,jobs_per_year:jobs,notes});
+  btn.textContent=error?'✓ Saved locally':'✓ Save';
+  btn.style.background=error?'#FEF3DC':'#6EE7B7';
+  setTimeout(()=>{btn.textContent='✓ Save';btn.style.background='#6EE7B7';btn.disabled=false;},1400);
+  document.getElementById(`cost-read-${opId}`).style.display='block';
+  document.getElementById(`cost-edit-${opId}`).style.display='none';
+  document.getElementById(`op-edit-btn-${opId}`).style.display='inline-block';
+  document.getElementById(`op-ok-btn-${opId}`).style.display='none';
+  renderOpDetail(CURRENT_OP_INDEX);
+  updateGrandTotalCell();
+  renderBUSummary();
+}
+
+function toggleDetail(i) {}
+
+
+// ── Business Unit Summary ──────────────────────────────────
+function renderBUSummary() {
+  const CAT_ORDER  = ['Audit & Tax', 'Accounting', 'Company Secretary', 'Admin'];
+  const CAT_ICON   = {'Audit & Tax':'🔍','Accounting':'🧾','Company Secretary':'🏢','Admin':'💬'};
+  const CAT_COLOR  = {'Audit & Tax':'#024A21','Accounting':'#1B6E8C','Company Secretary':'#534AB7','Admin':'#C8860A'};
+  const CAT_FILL   = {'Audit & Tax':'#EAF3EC','Accounting':'#EBF5FA','Company Secretary':'#F0EEFF','Admin':'#FEF3DC'};
+  const CAT_BORDER = {'Audit & Tax':'#03692F','Accounting':'#1B6E8C','Company Secretary':'#534AB7','Admin':'#C8860A'};
+
+  const counts = {};
+  const groups = {};
+  CAT_ORDER.forEach(c => { counts[c] = 0; groups[c] = []; });
+  (DATA.operations || []).forEach(op => {
+    if (counts[op.category] !== undefined) {
+      counts[op.category]++;
+      groups[op.category].push(op);
+    }
+  });
+
+  // Helper: get cost saved for an operation from COST_MAP
+  function opCost(op) {
+    const c = COST_MAP[op.id];
+    if (!c) return null;
+    return (Number(c.total_cost) ||
+      (Number(c.staff_hours||0)   * Number(c.staff_rate||0)) +
+      (Number(c.manager_hours||0) * Number(c.manager_rate||0)) +
+      (Number(c.partner_hours||0) * Number(c.partner_rate||0))) || null;
+  }
+
+  const totalOps  = Object.values(counts).reduce((s, n) => s + n, 0);
+  const totalCost = (DATA.operations || []).reduce((s, op) => s + (opCost(op) || 0), 0);
+
+  // Update grand total row
+  document.getElementById('bu-grand-total').textContent = totalOps;
+  const costEl = document.getElementById('bu-grand-total-cost');
+  if (costEl) costEl.textContent = totalCost > 0 ? fmtHKD(totalCost) : '—';
+
+  document.getElementById('bu-summary-content').innerHTML = CAT_ORDER.map((cat, i) => {
+    const color  = CAT_COLOR[cat];
+    const fill   = CAT_FILL[cat];
+    const border = CAT_BORDER[cat];
+    const catCost = groups[cat].reduce((s, op) => s + (opCost(op) || 0), 0);
+
+    const opList = groups[cat].map(op => {
+      const opIndex = DATA.operations.findIndex(o => o.id === op.id);
+      const cost = opCost(op);
+      const statusDot   = op.status==='done'?'🟢':op.status==='in-progress'?'🟡':'⚪';
+      const priorityLbl = {1:'P1',2:'P2',3:'P3',4:'P4',5:'P5'}[op.priority||3];
+      const priBg = {1:'#FEE2E2',2:'#FEF3C7',3:'#EBF5FA',4:'#EAF3EC',5:'#F3F4F6'}[op.priority||3];
+      const priColor = {1:'#B91C1C',2:'#92400E',3:'#1B6E8C',4:'#024A21',5:'#6B7280'}[op.priority||3];
+      return `
+      <div onclick="navigateToOp(${opIndex})"
+           style="display:flex;align-items:center;gap:8px;padding:6px 14px 6px 28px;
+                  border-bottom:1px solid var(--border);background:${fill};
+                  cursor:pointer;transition:filter .15s"
+           onmouseover="this.style.filter='brightness(0.95)'"
+           onmouseout="this.style.filter=''"
+           title="Click to view details">
+        <span style="flex-shrink:0;font-size:10px;font-weight:700;color:${color};
+                     background:white;border:1px solid ${border};border-radius:4px;
+                     padding:1px 6px;min-width:48px;text-align:center">${op.ref}</span>
+        <span style="font-size:12.5px;color:var(--txt);flex:1">${op.name}</span>
+        <span style="font-size:11px;font-weight:700;color:${priColor};background:${priBg};
+                     border-radius:4px;padding:1px 6px;flex-shrink:0">${priorityLbl}</span>
+        <span style="font-size:13px;flex-shrink:0" title="${{
+          'not-started':'Not started','in-progress':'In progress','done':'Done'
+        }[op.status||'not-started']}">${statusDot}</span>
+        <span style="font-size:12px;font-weight:${cost?'700':'400'};color:${cost?color:'#bbb'};
+                     text-align:right;min-width:90px;flex-shrink:0">
+          ${cost ? fmtHKD(cost) : '—'}
+        </span>
+      </div>`;
+    }).join('');
+
+    // Category subtotal row
+    const subtotalRow = `
+      <div style="display:flex;justify-content:space-between;align-items:center;
+                  padding:6px 14px 6px 28px;background:${fill};border-bottom:1px solid var(--border)">
+        <span style="font-size:11px;font-weight:700;color:${color};letter-spacing:.05em;text-transform:uppercase">
+          Subtotal — ${cat}
+        </span>
+        <span style="font-size:13px;font-weight:700;color:${color}">
+          ${catCost > 0 ? fmtHKD(catCost) : '—'}
+        </span>
+      </div>`;
+
+    return `
+      <div style="border-bottom:1px solid var(--border)">
+        <div onclick="toggleBU(${i})"
+             style="display:flex;justify-content:space-between;align-items:center;
+                    padding:10px 14px 10px 0;cursor:pointer;user-select:none;
+                    background:${i%2===0?'transparent':'var(--green-tint)'}"
+             title="Click to expand / collapse">
+          <span>
+            <span style="font-size:15px;margin-right:8px">${CAT_ICON[cat]}</span>
+            <span style="font-weight:600;color:${color}">${cat}</span>
+            <span id="bu-arrow-${i}"
+                  style="font-size:11px;color:var(--muted);margin-left:8px;
+                         display:inline-block;transition:transform .2s">▶</span>
+          </span>
+          <div style="display:flex;gap:32px;align-items:center">
+            <span style="font-size:12px;color:var(--muted);text-align:right">
+              ${catCost > 0 ? fmtHKD(catCost) : '—'}
+            </span>
+            <span style="font-weight:700;font-size:15px;color:${color};min-width:20px;text-align:right">
+              ${counts[cat]}
+            </span>
+          </div>
+        </div>
+        <div id="bu-list-${i}" style="display:none">
+          <!-- Column sub-header -->
+          <div style="display:flex;gap:8px;padding:5px 14px 5px 28px;
+                      background:white;border-bottom:1px solid var(--border)">
+            <span style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;min-width:48px">Ref</span>
+            <span style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;flex:1">Operation <span style="font-weight:400;font-style:italic">— click to view</span></span>
+            <span style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;min-width:28px;text-align:center">Pri</span>
+            <span style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;min-width:16px;text-align:center">St</span>
+            <span style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;min-width:90px;text-align:right">Cost / yr</span>
+          </div>
+          ${opList}
+          ${subtotalRow}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function toggleBU(i) {
+  const panel = document.getElementById('bu-list-' + i);
+  const arrow = document.getElementById('bu-arrow-' + i);
+  const open  = panel.style.display === 'none';
+  panel.style.display   = open ? 'block' : 'none';
+  arrow.style.transform = open ? 'rotate(90deg)' : 'rotate(0deg)';
+}
+
+function navigateToOp(index) {
+  // Switch to that operation in the viewer
+  selectOp(index);
+  // Scroll to the operations section smoothly
+  const el = document.getElementById('operations');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function renderDecisions() {
@@ -1835,29 +1270,53 @@ function renderTeam() {
 function openModal() { document.getElementById('modal-overlay').classList.add('open'); }
 function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
 function closeModalOutside(e) { if (e.target === document.getElementById('modal-overlay')) closeModal(); }
-function addOperation() {
+async function addOperation() {
   const name = document.getElementById('new-name').value.trim();
   if (!name) { alert('Please enter an operation name.'); return; }
-  const op = {
-    id: DATA.operations.length + 1,
-    phase: parseInt(document.getElementById('new-phase').value),
+
+  const payload = {
+    phase:                parseInt(document.getElementById('new-phase').value),
     name,
-    tool: document.getElementById('new-tool').value,
-    timeSaved: document.getElementById('new-time').value,
-    risk: document.getElementById('new-risk').value,
-    status: 'not-started',
-    owner: document.getElementById('new-owner').value,
-    targetDate: '',
-    estimatedHoursSaved: parseInt(document.getElementById('new-est').value) || 0,
-    actualHoursSaved: null,
-    notes: document.getElementById('new-notes').value,
-    conditions: document.getElementById('new-conditions').value,
+    tool:                 document.getElementById('new-tool').value,
+    status:               'not-started',
+    owner:                document.getElementById('new-owner').value || null,
+    estimated_hours_saved: parseInt(document.getElementById('new-est').value) || 0,
+    notes:                document.getElementById('new-notes').value || null,
+    conditions:           document.getElementById('new-conditions').value || null,
+    category:             'Audit & Tax',
+    priority:             3,
   };
-  DATA.operations.push(op);
-  render();
+
+  const category = 'Audit & Tax'; // default; edit via ✏️ button in detail view
+  const catPrefix = {'Audit & Tax':'A1','Accounting':'A2','Company Secretary':'A3','Admin':'A4'};
+  const prefix = catPrefix[category] || 'A1';
+  const catOps = DATA.operations.filter(o => o.category === category);
+  const nextNum = catOps.length + 1;
+  payload.ref = `${prefix}.${String(nextNum).padStart(2,'0')}`;
+
+  const saveBtn = document.querySelector('#modal-overlay .btn-save');
+  saveBtn.textContent = 'Saving…';
+  saveBtn.disabled = true;
+
+  const { data: inserted, error } = await sbInsert('phase1_operations', payload);
+
+  if (error) {
+    saveBtn.textContent = 'Add operation';
+    saveBtn.disabled = false;
+    alert('Failed to save to Supabase: ' + error.message +
+      '\n\nCheck that the phase1_operations table exists and RLS allows inserts.');
+    return;
+  }
+
+  saveBtn.textContent = 'Add operation';
+  saveBtn.disabled = false;
   closeModal();
-  alert('Operation added (session only). To persist, copy the updated data to data.json.');
-  ['new-name','new-est','new-notes','new-conditions'].forEach(id => document.getElementById(id).value = '');
+  ['new-name','new-est','new-notes','new-conditions'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+
+  // Reload from Supabase so the new row (with DB-assigned id) appears correctly
+  await init();
 }
 
 init();

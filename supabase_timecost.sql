@@ -27,3 +27,7 @@ FOR EACH ROW EXECUTE FUNCTION update_updated_at();
 ALTER TABLE time_cost_savings ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Allow anon all" ON time_cost_savings
   FOR ALL USING (true) WITH CHECK (true);
+
+-- Add jobs_per_year column if not already present
+ALTER TABLE time_cost_savings
+  ADD COLUMN IF NOT EXISTS jobs_per_year INTEGER DEFAULT 0;
